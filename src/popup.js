@@ -14,11 +14,11 @@ function change(htmlobj,current){
 	var json=JSON.parse(htmlobj.responseText);
 	$("body .content").empty();
 	for(var i=0;i<json.length;i++){
-		$("body .content").append("<li><small>"+transfer(json[i].created)+"</small><a target='_blank' href='"+json[i].url+"'>"+json[i].title+"</a>("+json[i].replies+")</li>");
+		$("body .content").append("<li><small>"+transfer(json[i].created)+"</small><a  href='"+json[i].url+"'>"+json[i].title+"</a>("+json[i].replies+")</li>");
 	}
-//	$("body a").click(function(){
-//		chrome.tabs.create({ url: $(this).attr("href") });
-//	});  
+	$("body a").click(function(){
+		chrome.tabs.create({ url: $(this).attr("href"), selected:false });
+	});  
 }
 document.addEventListener('DOMContentLoaded', function () {	       
    $(".hot").click(function(){
